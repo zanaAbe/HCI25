@@ -1,0 +1,176 @@
+/* Globales Styling */
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Container für die gesamte Seite */
+#container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Hauptcontainer */
+#login-container, #upload-container, #assignment-overview {
+  width: 98vw;
+  height: 95vh;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Form-Elemente */
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1200px;
+}
+
+label {
+  margin-bottom: 8px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+input {
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input:focus {
+  border-color: #4CAF50;
+  box-shadow: 0 0 8px rgba(76, 175, 80, 0.5);
+}
+
+button {
+  padding: 14px;
+  font-size: 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  width: 100%;
+}
+
+button:hover {
+  background-color: #45a049;
+  transform: translateY(-2px);
+}
+
+/* Modulübersicht */
+#module-overview ul {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+}
+
+#module-overview li {
+  margin-bottom: 10px;
+}
+
+#module-overview button {
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+#module-overview button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+/* Assignment-Liste */
+#assignment-overview ul {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+}
+
+#assignment-overview li {
+  margin-bottom: 10px;
+}
+
+#assignment-overview button {
+  padding: 14px;
+  font-size: 16px;
+  background-color: #ffc107;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  width: 100%;
+}
+
+#assignment-overview button:hover {
+  background-color: #e0a800;
+  transform: translateY(-2px);
+}
+
+/* Scrollbar-Styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f4f4f4;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #aaa;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  #login-container, #upload-container, #assignment-overview {
+    width: 95vw;
+    height: auto;
+    padding: 10px;
+  }
+
+  button {
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  input {
+    font-size: 14px;
+  }
+}
