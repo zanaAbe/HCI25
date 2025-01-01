@@ -1,5 +1,6 @@
 /* Globales Styling */
-body, html {
+body,
+html {
   height: 100%;
   margin: 0;
   font-family: Arial, sans-serif;
@@ -21,7 +22,9 @@ body, html {
 }
 
 /* Hauptcontainer */
-#login-container, #upload-container, #assignment-overview {
+#login-container,
+#upload-container,
+#assignment-overview {
   width: 98vw;
   height: 95vh;
   background-color: white;
@@ -62,14 +65,14 @@ input {
 }
 
 input:focus {
-  border-color: #4CAF50;
+  border-color: #4caf50;
   box-shadow: 0 0 8px rgba(76, 175, 80, 0.5);
 }
 
 button {
   padding: 14px;
   font-size: 16px;
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
   border: none;
   border-radius: 4px;
@@ -119,24 +122,55 @@ button:hover {
 }
 
 #assignment-overview li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
   margin-bottom: 10px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 4px;
 }
 
-#assignment-overview button {
-  padding: 14px;
+#assignment-overview span {
   font-size: 16px;
-  background-color: #ffc107;
+  font-weight: bold;
+  flex: 1;
+  color: #333;
+}
+
+/* Title style to emphasize assignment titles */
+#assignment-overview li span {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  text-transform: capitalize;
+}
+
+/* Smaller buttons for Upload and Download */
+#assignment-overview button {
+  padding: 6px 10px;
+  font-size: 14px;
+  background-color: #007bff;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.2s;
-  width: 100%;
+  margin-left: 10px;
 }
 
 #assignment-overview button:hover {
-  background-color: #e0a800;
+  background-color: #0056b3;
   transform: translateY(-2px);
+}
+
+/* Styling for the score section */
+#assignment-overview li span:last-child {
+  font-size: 16px;
+  font-weight: bold;
+  color: #555;
+  text-align: right;
 }
 
 /* Scrollbar-Styling */
@@ -159,7 +193,9 @@ button:hover {
 
 /* Media Queries */
 @media (max-width: 768px) {
-  #login-container, #upload-container, #assignment-overview {
+  #login-container,
+  #upload-container,
+  #assignment-overview {
     width: 95vw;
     height: auto;
     padding: 10px;
@@ -173,4 +209,227 @@ button:hover {
   input {
     font-size: 14px;
   }
+}
+
+#user-overview ul {
+  width: 100%;
+  padding: 0;
+  list-style: none;
+  margin-bottom: 20px; /* Add space between the list and the button */
+}
+
+#user-overview li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+#user-overview input[type="number"] {
+  padding: 6px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  text-align: center;
+}
+
+/* Back button positioning */
+#user-overview button {
+  padding: 10px 16px;
+  font-size: 14px;
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+#user-overview button:hover {
+  background-color: #5a6268;
+  transform: translateY(-2px);
+}
+
+/* Stil für den Gruppennamen */
+#user-overview li span {
+  flex: 1; /* Takes up available space */
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* Stil für die Buttons */
+#user-overview li button {
+  padding: 8px 12px;
+  font-size: 14px;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 10px;
+  white-space: nowrap; /* Prevents wrapping for button text */
+}
+
+#user-overview li button:nth-child(2) {
+  background-color: #007bff; /* Download */
+}
+
+#user-overview li button:nth-child(2):hover {
+  background-color: #0056b3;
+}
+
+#user-overview li button:nth-child(3) {
+  background-color: #28a745; /* Upload */
+}
+
+#user-overview li button:nth-child(3):hover {
+  background-color: #218838;
+}
+
+/* Modal background */
+#group-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Modal content */
+#group-modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+}
+
+#group-members-list {
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+#group-members-list li {
+  list-style-type: disc;
+  margin-bottom: 5px;
+}
+
+/* Styling for the Total Score field and Leaderboard button */
+#total-score-container {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+#total-score {
+  font-size: 16px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+#leaderboardButton {
+  padding: 10px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#leaderboardButton:hover {
+  background-color: #218838;
+}
+
+/* Styling for the Total Score field and Leaderboard button */
+#total-score-container {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+#total-score {
+  font-size: 16px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+#leaderboardButton {
+  padding: 10px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#leaderboardButton:hover {
+  background-color: #218838;
+}
+
+/* Styling for the Total Score field and Leaderboard button */
+#total-score-container {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+#total-score {
+  font-size: 16px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+#leaderboardButton {
+  padding: 10px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#leaderboardButton:hover {
+  background-color: #218838;
+}
+
+/* Leaderboard Modal styling */
+#leaderboard-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+#leaderboard-modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+}
+
+#leaderboard-list {
+  margin-top: 10px;
+  padding-left: 0;
+  list-style-type: none;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#leaderboard-list li {
+  margin-bottom: 15px;
 }

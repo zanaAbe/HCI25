@@ -1,68 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login Page</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <div id="login-container">
-    <h1>Login</h1>
-    <form id="login-form" onsubmit="handleLogin(event)">
-      <label for="username">Username:</label>
-      <input type="text" id="username" name="username" required>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Page</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="login-container">
+      <h1>Login</h1>
+      <form id="login-form" onsubmit="handleLogin(event)">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required />
 
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="password" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required />
 
-      <button type="submit">Login</button>
-    </form>
-  </div>
-
-  <div id="upload-container" style="display: none;">
-    <h1>Welcome!</h1>
-    <p id="welcome-message"></p>
-    <div id="module-overview">
-      <h2>Available Modules</h2>
-      <ul>
-        <li><button onclick="selectModule('GMCI')">GMCI</button></li>
-        <li><button onclick="selectModule('Programmieren 1')">Programmieren 1</button></li>
-        <li><button onclick="selectModule('Programmieren 2')">Programmieren 2</button></li>
-      </ul>
+        <button type="submit">Login</button>
+      </form>
     </div>
-    <button onclick="logout()">Logout</button>
-  </div>
 
-  <!-- Bereich für Assignments -->
-  <div id="assignment-overview" style="display: none;">
-    <h2 id="assignment-title"></h2>
-    <ul id="assignments-list">
-      <!-- Assignments werden dynamisch hinzugefügt -->
-    </ul>
-    <button onclick="backToModules()">Back to Modules</button>
-  </div>
+    <div id="upload-container" style="display: none">
+      <h1>Welcome!</h1>
+      <p id="welcome-message"></p>
+      <div id="module-overview">
+        <h2>Available Modules</h2>
+        <ul>
+          <li><button onclick="selectModule('GMCI')">GMCI</button></li>
+          <li>
+            <button onclick="selectModule('Programmieren 1')">
+              Programmieren 1
+            </button>
+          </li>
+          <li>
+            <button onclick="selectModule('Programmieren 2')">
+              Programmieren 2
+            </button>
+          </li>
+        </ul>
+      </div>
+      <button onclick="logout()">Logout</button>
+    </div>
 
-  <!-- Bereich für die User-Übersicht (wird nur angezeigt, wenn der Korrektor ein Assignment ausgewählt hat) -->
-  <div id="user-overview" style="display: none;">
-    <h2>User Assignments</h2>
-    <ul id="user-list">
-      <!-- Benutzer werden hier dynamisch hinzugefügt -->
-    </ul>
-    <button onclick="backToAssignments()">Back to Assignments</button>
-  </div>
+    <!-- Bereich für Assignments -->
+    <div id="assignment-overview" style="display: none">
+      <h2 id="assignment-title"></h2>
+      <ul id="assignments-list">
+        <!-- Assignments werden dynamisch hinzugefügt -->
+      </ul>
+      <button onclick="backToModules()">Back to Modules</button>
+    </div>
 
-  <!-- Bereich für den Datei-Upload -->
-  <div id="file-upload-container" style="display: none;">
-    <h2 id="file-upload-title"></h2>
-    <form id="upload-form">
-      <label for="file-upload">Upload your file:</label>
-      <input type="file" id="file-upload" name="file-upload" required>
-      <button type="submit">Upload</button>
-    </form>
-    <button onclick="backToAssignments()">Back to Assignments</button>
-  </div>
+    <!-- Bereich für die Gruppenübersicht (nur sichtbar für Korrektor) -->
+    <div id="user-overview" style="display: none">
+      <h2>User Assignments</h2>
+      <ul id="user-list">
+        <!-- Dynamische Gruppenliste -->
+      </ul>
+      <button onclick="backToAssignments()">Back to Assignments</button>
+    </div>
 
-  <script src="script.js"></script>
-</body>
+    <!-- Bereich für den Datei-Upload -->
+    <div id="file-upload-container" style="display: none">
+      <h2 id="file-upload-title"></h2>
+      <form id="upload-form">
+        <label for="file-upload">Upload your file:</label>
+        <input type="file" id="file-upload" name="file-upload" required />
+        <button type="submit">Upload</button>
+      </form>
+      <button onclick="backToAssignments()">Back to Assignments</button>
+    </div>
+
+    <!-- My Group Popup (Initially hidden) -->
+    <div id="group-modal" style="display: none">
+      <div id="group-modal-content">
+        <h3>My Group: <span id="group-name">Group A</span></h3>
+        <button>Leave Group</button>
+        <button>Add Member</button>
+        <ul id="group-members-list">
+          <li>John Doe</li>
+          <li>Jane Smith</li>
+          <li>Alice Brown</li>
+        </ul>
+        <button onclick="closeGroupModal()">Close</button>
+      </div>
+    </div>
+
+    <!-- Leaderboard Popup (Initially hidden) -->
+    <div id="leaderboard-modal" style="display: none">
+      <div id="leaderboard-modal-content">
+        <h3>Leaderboard</h3>
+        <ul id="leaderboard-list">
+          <!-- Static leaderboard data with positions -->
+          <li>1st Place: Group B - 320 points</li>
+          <li>2nd Place: Group A - 250 points</li>
+          <li>3rd Place: Group D - 180 points</li>
+          <li>4th Place: Group C - 150 points</li>
+        </ul>
+        <button onclick="closeLeaderboardModal()">Close</button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
 </html>
