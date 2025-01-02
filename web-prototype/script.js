@@ -52,57 +52,87 @@ function loadModules(modules, username) {
 function selectModule(moduleName, username) {
   if (moduleName === "GMCI") {
     document.getElementById("upload-container").style.display = "none";
-    document.getElementById("assignment-overview").style.display = "flex";
-    loadAssignments(moduleName, username);
+    if (username === "korrektor") {
+      document.getElementById("assignment-korrektor-overview").style.display =
+        "flex";
+    } else {
+      document.getElementById("assignment-overview").style.display = "flex";
+    }
+    loadAssignmentsPage(moduleName, username);
   } else {
     alert(`You have selected the module: ${moduleName}`);
   }
 }
 
 // Function to check user role and load appropriate assignments page
-function loadAssignmentsPage(username) {
+function loadAssignmentsPage(modulename, username) {
   if (username === "korrektor") {
-    loadKorrektorAssignments();
+    loadKorrektorAssignments(modulename, username);
   } else {
-    loadStudentAssignments();
+    loadAssignments(modulename, username);
   }
 }
 
 // Korrektor's assignments page (different from the normal assignments page)
-function loadKorrektorAssignments() {
-  // Hide other containers
-  document.getElementById("upload-container").style.display = "none";
-  document.getElementById("assignment-overview").style.display = "none";
-  document.getElementById("file-upload-container").style.display = "none";
-
-  // Show the Korrektor assignments page
-  const korrektorAssignmentsContainer = document.getElementById(
-    "korrektor-assignments-container"
+function loadKorrektorAssignments(moduleName, username) {
+  const assignmentOverview = document.getElementById(
+    "assignment-korrektor-overview"
   );
-  korrektorAssignmentsContainer.style.display = "flex";
+  assignmentOverview.innerHTML = `<h2>Assignments for ${moduleName}</h2>`;
 
-  // Add assignment list for Korrektor
-  const assignmentList = document.createElement("ul");
-  const assignments = ["Assignment 1", "Assignment 2", "Assignment 3"]; // Dummy assignments
+  const ul = document.createElement("ul");
+  ul.style.width = "100%";
+
+  let totalScore = 0; // Initialize total score
+
+  // Dummy assignments and random scores
+  const assignments = Array.from({ length: 6 }, (_, i) => ({
+    name: `Assignment ${i + 1}`,
+    score: Math.floor(Math.random() * 101), // Random scores between 0-100
+  }));
 
   assignments.forEach((assignment) => {
     const li = document.createElement("li");
-    const button = document.createElement("button");
-    button.textContent = assignment;
-    button.onclick = () => openSubmissionPage(assignment);
-    li.appendChild(button);
-    assignmentList.appendChild(li);
+    li.style.display = "flex";
+    li.style.justifyContent = "space-between";
+    li.style.alignItems = "center";
+    li.style.padding = "10px";
+    li.style.border = "1px solid #ddd";
+    li.style.marginBottom = "10px";
+    li.style.borderRadius = "4px";
+    li.style.backgroundColor = "#f9f9f9";
+
+    // Assignment title with emphasis
+    const assignmentName = document.createElement("span");
+    assignmentName.textContent = `${assignment.name}`;
+    assignmentName.style.fontSize = "18px"; // Larger font for emphasis
+    assignmentName.style.fontWeight = "bold"; // Bold font for title
+    assignmentName.style.color = "#333"; // Dark color for the title
+    li.appendChild(assignmentName);
+
+    // Upload Submission button
+    const uploadButton = document.createElement("button");
+    uploadButton.textContent = "Go to Submissions";
+    uploadButton.style.marginRight = "10px";
+    uploadButton.onclick = () =>
+      loadUploadPage(moduleName, assignment.name, username); // Handle upload click
+    li.appendChild(uploadButton);
+
+    // Add score to the total score
+    totalScore += assignment.score;
+
+    ul.appendChild(li);
   });
 
-  korrektorAssignmentsContainer.innerHTML =
-    "<h2>Assignments for Korrektor</h2>";
-  korrektorAssignmentsContainer.appendChild(assignmentList);
+  assignmentOverview.appendChild(ul);
 
-  // Back to modules button
+  // Add "Back to Modules" button
   const backButton = document.createElement("button");
   backButton.textContent = "Back to Modules";
-  backButton.onclick = backToModules;
-  korrektorAssignmentsContainer.appendChild(backButton);
+  backButton.style.marginTop = "20px";
+  backButton.style.alignSelf = "center";
+  backButton.onclick = backToModules; // Going back to modules
+  assignmentOverview.appendChild(backButton);
 }
 
 // Function to open submission page for Korrektor (where they can download and upload corrections)
@@ -144,12 +174,10 @@ function openSubmissionPage(assignmentName) {
 
 // Function to go back to the modules page
 function backToModules() {
-  document.getElementById("korrektor-assignments-container").style.display =
-    "none";
+  document.getElementById("assignment-overview").style.display = "none";
   document.getElementById("upload-container").style.display = "flex"; // Show the module selection page
 }
 
-// Function to open the "My Group" modal
 // Function to open the "My Group" modal
 function openGroupModal() {
   // Create modal container
@@ -418,6 +446,8 @@ function openStudentAssignment(student, moduleName, assignmentNumber) {
 function backToModules() {
   document.getElementById("upload-container").style.display = "flex";
   document.getElementById("assignment-overview").style.display = "none";
+  document.getElementById("assignment-korrektor-overview").style.display =
+    "none";
 }
 
 // Funktion, um zurück zur Assignment-Übersicht zu gehen
@@ -459,6 +489,8 @@ function loadUploadPage(moduleName, assignmentNumber, username) {
 }
 
 function loadGroupOverview(moduleName, assignmentNumber) {
+  document.getElementById("assignment-korrektor-overview").style.display =
+    "none";
   const userOverview = document.getElementById("user-overview");
   userOverview.innerHTML = `<h2>Groups for ${moduleName} - Assignment ${assignmentNumber}</h2>`;
   const ul = document.createElement("ul");
@@ -541,5 +573,6 @@ function goBack() {
   document.getElementById("user-overview").style.display = "none";
 
   // Show the assignment overview again
-  document.getElementById("assignment-overview").style.display = "flex";
+  document.getElementById("assignment-korrektor-overview").style.display =
+    "flex";
 }
