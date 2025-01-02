@@ -69,7 +69,8 @@
       <button onclick="backToAssignments()">Back to Assignments</button>
     </div>
 
-    <!-- Bereich für den Datei-Upload -->
+    <!-- Bereich für den file upload
+    
     <div id="file-upload-container" style="display: none">
       <h2 id="file-upload-title"></h2>
       <form id="upload-form">
@@ -78,6 +79,69 @@
         <button type="submit">Upload</button>
       </form>
       <button onclick="backToAssignments()">Back to Assignments</button>
+    </div> //-->
+
+    <div
+      id="file-upload-container"
+      style="
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+      "
+    >
+      <h2 id="file-upload-title" style="margin-bottom: 20px; color: #333"></h2>
+      <form
+        id="upload-form"
+        style="
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 15px;
+          width: 100%;
+        "
+      >
+        <label for="file-upload" style="color: #555; font-weight: bold"
+          >Upload your file:</label
+        >
+        <input
+          type="file"
+          id="file-upload"
+          name="file-upload"
+          required
+          style="padding: 10px; border: 1px solid #ccc; border-radius: 5px"
+        />
+        <button
+          type="submit"
+          style="
+            padding: 10px 20px;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+          "
+        >
+          Upload
+        </button>
+      </form>
+      <button
+        onclick="backToAssignments()"
+        style="
+          margin-top: 20px;
+          padding: 10px 20px;
+          color: white;
+          background-color: #007bff;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+        "
+      >
+        Back to Assignments
+      </button>
     </div>
 
     <!-- My Group Popup (Initially hidden) -->

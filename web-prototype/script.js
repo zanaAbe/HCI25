@@ -78,12 +78,13 @@ function loadKorrektorAssignments(moduleName, username) {
   const assignmentOverview = document.getElementById(
     "assignment-korrektor-overview"
   );
-  assignmentOverview.innerHTML = `<h2>Assignments for ${moduleName}</h2>`;
+  assignmentOverview.innerHTML = `<h2 style="text-align: center; font-size: 24px; ">Assignments for ${moduleName}</h2>`;
 
   const ul = document.createElement("ul");
   ul.style.width = "100%";
-
-  let totalScore = 0; // Initialize total score
+  ul.style.listStyle = "none";
+  ul.style.padding = "0";
+  ul.style.marginBottom = "20px"; // Ensure spacing between the list and the button
 
   // Dummy assignments and random scores
   const assignments = Array.from({ length: 6 }, (_, i) => ({
@@ -96,43 +97,70 @@ function loadKorrektorAssignments(moduleName, username) {
     li.style.display = "flex";
     li.style.justifyContent = "space-between";
     li.style.alignItems = "center";
-    li.style.padding = "10px";
+    li.style.padding = "10px 15px";
     li.style.border = "1px solid #ddd";
     li.style.marginBottom = "10px";
-    li.style.borderRadius = "4px";
-    li.style.backgroundColor = "#f9f9f9";
+    li.style.borderRadius = "8px";
+    li.style.backgroundColor = "#f7faff";
+    li.style.boxShadow = "0 2px 4px rgba(0, 0, 0, 0.1)";
 
     // Assignment title with emphasis
     const assignmentName = document.createElement("span");
     assignmentName.textContent = `${assignment.name}`;
-    assignmentName.style.fontSize = "18px"; // Larger font for emphasis
-    assignmentName.style.fontWeight = "bold"; // Bold font for title
-    assignmentName.style.color = "#333"; // Dark color for the title
+    assignmentName.style.fontSize = "18px";
+    assignmentName.style.fontWeight = "bold";
+    assignmentName.style.color = "#333";
     li.appendChild(assignmentName);
 
-    // Upload Submission button
+    // Go to Submissions button
     const uploadButton = document.createElement("button");
     uploadButton.textContent = "Go to Submissions";
-    uploadButton.style.marginRight = "10px";
+    uploadButton.style.padding = "8px 12px";
+    uploadButton.style.backgroundColor = "#4A90E2"; // Blue background
+    uploadButton.style.color = "#fff"; // White text
+    uploadButton.style.border = "none";
+    uploadButton.style.borderRadius = "4px";
+    uploadButton.style.cursor = "pointer";
+    uploadButton.style.fontSize = "14px";
+    uploadButton.style.transition = "background-color 0.3s ease";
+    uploadButton.onmouseover = () => {
+      uploadButton.style.backgroundColor = "#357ABD"; // Darker blue on hover
+    };
+    uploadButton.onmouseout = () => {
+      uploadButton.style.backgroundColor = "#4A90E2"; // Reset to original
+    };
     uploadButton.onclick = () =>
-      loadUploadPage(moduleName, assignment.name, username); // Handle upload click
+      loadUploadPage(moduleName, assignment.name, username);
     li.appendChild(uploadButton);
-
-    // Add score to the total score
-    totalScore += assignment.score;
 
     ul.appendChild(li);
   });
 
   assignmentOverview.appendChild(ul);
 
-  // Add "Back to Modules" button
+  // Add "Back to Modules" button after the list (below the assignments)
   const backButton = document.createElement("button");
   backButton.textContent = "Back to Modules";
-  backButton.style.marginTop = "20px";
+  backButton.style.padding = "10px 15px";
+  backButton.style.backgroundColor = "#4A90E2"; // Blue background
+  backButton.style.color = "#fff"; // White text
+  backButton.style.border = "none";
+  backButton.style.borderRadius = "4px";
+  backButton.style.cursor = "pointer";
+  backButton.style.fontSize = "16px";
+  backButton.style.transition = "background-color 0.3s ease";
   backButton.style.alignSelf = "center";
-  backButton.onclick = backToModules; // Going back to modules
+  backButton.onmouseover = () => {
+    backButton.style.backgroundColor = "#357ABD"; // Darker blue on hover
+  };
+  backButton.onmouseout = () => {
+    backButton.style.backgroundColor = "#4A90E2"; // Reset to original
+  };
+  backButton.onclick = backToModules;
+
+  // Append the back button below the assignment list (after ul)
   assignmentOverview.appendChild(backButton);
+  assignmentOverview.style.flexDirection = "column";
 }
 
 // Function to open submission page for Korrektor (where they can download and upload corrections)
