@@ -380,6 +380,7 @@ function loadAssignments(moduleName, username) {
     const uploadButton = document.createElement("button");
     uploadButton.textContent = "Upload Submission";
     uploadButton.style.marginRight = "10px";
+    uploadButton.style.backgroundColor = "#4caf50";
     uploadButton.onclick = () =>
       loadUploadPage(moduleName, assignment.name, username); // Handle upload click
     li.appendChild(uploadButton);
