@@ -192,7 +192,7 @@ function openSubmissionPage(assignmentName) {
 
   // Add back button to return to the assignments list
   const backButton = document.createElement("button");
-  backButton.textContent = "Back to Assignments";
+  backButton.innerHTML = "Back to Assignments";
   backButton.onclick = () => {
     document.getElementById("file-upload-container").style.display = "none";
     loadKorrektorAssignments(); // Reload the assignments page
@@ -378,7 +378,7 @@ function loadAssignments(moduleName, username) {
 
     // Upload Submission button
     const uploadButton = document.createElement("button");
-    uploadButton.textContent = "Upload Submission";
+    uploadButton.innerHTML = "&#8682; Upload Submission";
     uploadButton.style.marginRight = "10px";
     uploadButton.style.backgroundColor = "#4caf50";
     uploadButton.onclick = () =>
@@ -387,7 +387,7 @@ function loadAssignments(moduleName, username) {
 
     // Download Correction button
     const downloadButton = document.createElement("button");
-    downloadButton.textContent = "Download Correction";
+    downloadButton.innerHTML = "&#8681; Download Correction";
     downloadButton.style.marginRight = "10px";
     downloadButton.onclick = () =>
       downloadCorrection(moduleName, assignment.name); // Handle download click
@@ -411,7 +411,7 @@ function loadAssignments(moduleName, username) {
 
   // Add "Back to Modules" button
   const backButton = document.createElement("button");
-  backButton.textContent = "Back to Modules";
+  backButton.innerHTML = "Back to Modules";
   backButton.style.marginTop = "20px";
   backButton.style.alignSelf = "center";
   backButton.style.backgroundColor = "#c81e1e";
