@@ -142,7 +142,7 @@ function loadKorrektorAssignments(moduleName, username) {
   const backButton = document.createElement("button");
   backButton.textContent = "Back to Modules";
   backButton.style.padding = "10px 15px";
-  backButton.style.backgroundColor = "#4A90E2"; // Blue background
+  backButton.style.backgroundColor = "#c81e1e"; // red background
   backButton.style.color = "#fff"; // White text
   backButton.style.border = "none";
   backButton.style.borderRadius = "4px";
@@ -150,11 +150,11 @@ function loadKorrektorAssignments(moduleName, username) {
   backButton.style.fontSize = "16px";
   backButton.style.transition = "background-color 0.3s ease";
   backButton.style.alignSelf = "center";
-  backButton.onmouseover = () => {
-    backButton.style.backgroundColor = "#357ABD"; // Darker blue on hover
-  };
+  //backButton.onmouseover = () => {
+  //  backButton.style.backgroundColor = "#8e1717"; // Darker red on hover
+  //};
   backButton.onmouseout = () => {
-    backButton.style.backgroundColor = "#4A90E2"; // Reset to original
+    backButton.style.backgroundColor = "#c81e1e"; // Reset to original
   };
   backButton.onclick = backToModules;
 
@@ -268,6 +268,7 @@ function openGroupModal() {
   closeModalButton.textContent = "Close";
   closeModalButton.style.marginTop = "20px";
   closeModalButton.style.width = "100%";
+  closeModalButton.style.backgroundColor = "#c81e1e";
   closeModalButton.onclick = () => modal.remove();
   modalContent.appendChild(closeModalButton);
 
@@ -331,6 +332,7 @@ function openLeaderboardModal() {
   closeLeaderboardButton.textContent = "Close";
   closeLeaderboardButton.style.marginTop = "20px";
   closeLeaderboardButton.style.width = "100%";
+  closeLeaderboardButton.style.backgroundColor = "#c81e1e";
   closeLeaderboardButton.onclick = () => leaderboardModal.remove();
   leaderboardContent.appendChild(closeLeaderboardButton);
 
@@ -411,6 +413,7 @@ function loadAssignments(moduleName, username) {
   backButton.textContent = "Back to Modules";
   backButton.style.marginTop = "20px";
   backButton.style.alignSelf = "center";
+  backButton.style.backgroundColor = "#c81e1e";
   backButton.onclick = backToModules; // Going back to modules
   assignmentOverview.appendChild(backButton);
 
@@ -568,6 +571,7 @@ function loadGroupOverview(moduleName, assignmentNumber) {
   backButton.onclick = goBack;
   backButton.style.marginTop = "20px";
   backButton.style.alignSelf = "center"; // Center the button horizontally
+  backButton.style.backgroundColor = "#c81e1e";
   userOverview.appendChild(backButton);
 
   userOverview.style.display = "flex";
