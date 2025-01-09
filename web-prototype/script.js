@@ -26,8 +26,18 @@ function handleLogin(event) {
     // Module dynamisch laden
     loadModules(users[username].modules, username);
   } else {
-    alert("Invalid credentials! Please try again.");
+    showErrorModal();
   }
+}
+
+// Show the modal
+function showErrorModal() {
+  document.getElementById("error-modal").style.display = "flex";
+}
+
+// Close the modal
+function closeErrorModal() {
+  document.getElementById("error-modal").style.display = "none";
 }
 
 // Module dynamisch laden
