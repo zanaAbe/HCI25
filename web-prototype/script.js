@@ -43,7 +43,8 @@ function closeErrorModal() {
 // Module dynamisch laden
 function loadModules(modules, username) {
   const moduleOverview = document.getElementById("module-overview");
-  moduleOverview.innerHTML = "<h2>Available Modules</h2>";
+  moduleOverview.innerHTML =
+    "<h2>Module Overview</h2><small>Login Page > Module Overview</small>";
   const ul = document.createElement("ul");
 
   modules.forEach((module) => {
@@ -88,7 +89,7 @@ function loadKorrektorAssignments(moduleName, username) {
   const assignmentOverview = document.getElementById(
     "assignment-korrektor-overview"
   );
-  assignmentOverview.innerHTML = `<h2 style="text-align: center; font-size: 24px; ">Assignments for ${moduleName}</h2>`;
+  assignmentOverview.innerHTML = `<h2 style="text-align: center; font-size: 24px; ">Assignments for ${moduleName}</h2><small>Login Page > Module Overview > Assignment Selection</small>`;
 
   const ul = document.createElement("ul");
   ul.style.width = "100%";
@@ -354,7 +355,7 @@ function openLeaderboardModal() {
 // Function to load assignments
 function loadAssignments(moduleName, username) {
   const assignmentOverview = document.getElementById("assignment-overview");
-  assignmentOverview.innerHTML = `<h2>Assignments for ${moduleName}</h2>`;
+  assignmentOverview.innerHTML = `<h2>Assignments for ${moduleName}</h2><small>Login Page > Module Overview > Assignment Selection</small>`;
 
   const ul = document.createElement("ul");
   ul.style.width = "100%";
@@ -534,7 +535,7 @@ function loadGroupOverview(moduleName, assignmentNumber) {
   document.getElementById("assignment-korrektor-overview").style.display =
     "none";
   const userOverview = document.getElementById("user-overview");
-  userOverview.innerHTML = `<h2>Groups for ${moduleName} - Assignment ${assignmentNumber}</h2>`;
+  userOverview.innerHTML = `<h2>Groups for ${moduleName} - Assignment ${assignmentNumber}</h2><small>Login Page > Module Overview > Assignment Selection > Assignment Upload & Download</small>`;
   const ul = document.createElement("ul");
 
   // Dummy groups and submissions
